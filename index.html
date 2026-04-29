@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preetish Ubhrani (ubhranipreetish)</title>
+    <style>
+        /* GitHub Dark Mode Variables */
+        :root {
+            --gh-bg: #0d1117;
+            --gh-bg-secondary: #161b22;
+            --gh-border: #30363d;
+            --gh-text-main: #c9d1d9;
+            --gh-text-muted: #8b949e;
+            --gh-link: #58a6ff;
+            --gh-btn-bg: #21262d;
+            --gh-btn-hover: #30363d;
+            --gh-btn-primary: #238636;
+            --gh-btn-primary-hover: #2ea043;
+            --gh-green: #2ea043;
+            --gh-orange: #e34c26;
+            --gh-yellow: #e3b341;
+
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--gh-bg);
+            color: var(--gh-text-main);
+            line-height: 1.5;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--gh-link);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #010409;
+            padding: 16px;
+            border-bottom: 1px solid var(--gh-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .header-logo svg {
+            fill: white;
+            width: 32px;
+            height: 32px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            fill: white;
+            cursor: pointer;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            gap: 24px;
+            flex-grow: 1;
+        }
+
+        /* --- SIDEBAR (Profile) --- */
+        .sidebar {
+            width: 296px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .avatar {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid var(--gh-border);
+            margin-bottom: 16px;
+            object-fit: cover;
+        }
+
+        .vcard-names {
+            margin-bottom: 16px;
+        }
+
+        .vcard-fullname {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--gh-text-main);
+        }
+
+        .vcard-username {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.25;
+            color: var(--gh-text-muted);
+        }
+
+        .user-profile-bio {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--gh-text-main);
+        }
+
+        .btn-profile {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-main);
+            padding: 5px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .btn-profile:hover {
+            background: var(--gh-btn-hover);
+            text-decoration: none;
+        }
+
+        .vcard-details {
+            list-style: none;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--gh-border);
+            padding-bottom: 16px;
+        }
+
+        .vcard-details li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            color: var(--gh-text-main);
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .vcard-details svg {
+            fill: var(--gh-text-muted);
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .skills-section h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .badge {
+            border: 1px solid var(--gh-border);
+            padding: 2px 10px;
+            border-radius: 2em;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gh-text-muted);
+            white-space: nowrap;
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .content {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        /* Tabs */
+        .UnderlineNav {
+            display: flex;
+            border-bottom: 1px solid var(--gh-border);
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+
+        .UnderlineNav-item {
+            padding: 8px 16px;
+            font-size: 14px;
+            color: var(--gh-text-main);
+            cursor: default;
+            border-bottom: 2px solid #f78166;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .UnderlineNav-item svg {
+            fill: var(--gh-text-muted);
+            width: 16px;
+            height: 16px;
+        }
+
+        .repo-count {
+            background: rgba(110, 118, 129, 0.4);
+            border-radius: 2em;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* --- REPOSITORY FILTER BAR --- */
+        .repo-filter-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gh-border);
+        }
+
+        .local-search {
+            background: var(--gh-bg);
+            border: 1px solid var(--gh-border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: var(--gh-text-main);
+            width: 100%;
+            max-width: 320px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .local-search:focus {
+            border-color: var(--gh-link);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+        }
+
+        .local-search::placeholder {
+            color: var(--gh-text-muted);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-main);
+            padding: 4px 14px;
+            border-radius: 2em;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--gh-btn-hover);
+        }
+
+        .filter-btn.active {
+            background: var(--gh-link);
+            color: #fff;
+            border-color: var(--gh-link);
+        }
+
+        /* Repositories Grid */
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        /* Repo Card with Image */
+        .repo-card {
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            background: var(--gh-bg);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            overflow: hidden;
+        }
+
+        .repo-card:hover {
+            border-color: var(--gh-text-muted);
+        }
+
+        .card-cover-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--gh-border);
+        }
+
+        .repo-card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .repo-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 8px;
+        }
+
+        .repo-title-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .repo-title-group svg {
+            fill: var(--gh-text-muted);
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .repo-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gh-link);
+            word-break: break-word;
+        }
+
+        .repo-badge {
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-muted);
+            font-size: 12px;
+            padding: 0 7px;
+            border-radius: 2em;
+            line-height: 18px;
+            white-space: nowrap;
+        }
+
+        .repo-desc {
+            color: var(--gh-text-muted);
+            font-size: 12px;
+            margin-bottom: 16px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .repo-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .topic-tag {
+            background: rgba(56, 139, 253, 0.1);
+            color: var(--gh-link);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 0 10px;
+            border-radius: 2em;
+            line-height: 22px;
+            white-space: nowrap;
+        }
+
+        .repo-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--gh-text-muted);
+            flex-wrap: wrap;
+        }
+
+        .lang-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .lang-excel {
+            background-color: var(--gh-green);
+        }
+
+        .lang-looker {
+            background-color: var(--gh-link);
+        }
+
+        .lang-tableau {
+            background-color: var(--gh-orange);
+        }
+
+        .lang-python {
+            background-color: var(--gh-yellow);
+        }
+
+        /* Contribution Graph */
+        .contrib-graph {
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 40px;
+            overflow-x: hidden;
+        }
+
+        .contrib-title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .graph-squares {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .g-sq {
+            width: 11px;
+            height: 11px;
+            border-radius: 2px;
+            background: #161b22;
+            outline: 1px solid rgba(255, 255, 255, 0.05);
+            outline-offset: -1px;
+        }
+
+        .g-l1 {
+            background: #0e4429;
+        }
+
+        .g-l2 {
+            background: #006d32;
+        }
+
+        .g-l3 {
+            background: #26a641;
+        }
+
+        .g-l4 {
+            background: #39d353;
+        }
+
+        /* No Results Message */
+        .no-results {
+            display: none;
+            padding: 40px;
+            text-align: center;
+            color: var(--gh-text-muted);
+            border: 1px dashed var(--gh-border);
+            border-radius: 6px;
+            grid-column: span 2;
+        }
+
+        /* --- SITE FOOTER (DYNAMIC YEAR) --- */
+        .site-footer {
+            border-top: 1px solid var(--gh-border);
+            padding: 40px 24px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gh-text-muted);
+            background-color: var(--gh-bg);
+        }
+
+        .site-footer a {
+            color: var(--gh-link);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--gh-bg-secondary);
+            border: 1px solid var(--gh-border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.98);
+            transition: 0.2s;
+            box-shadow: 0 0 0 1px #30363d, 0 16px 32px rgba(0, 0, 0, 0.85);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--gh-border);
+            background: var(--gh-bg-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            word-break: break-word;
+            padding-right: 16px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--gh-text-muted);
+            cursor: pointer;
+            padding: 4px;
+            flex-shrink: 0;
+        }
+
+        .close-btn:hover {
+            color: var(--gh-text-main);
+        }
+
+        .close-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .modal-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            border: 1px solid var(--gh-border);
+        }
+
+        .modal-desc {
+            font-size: 14px;
+            color: var(--gh-text-main);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .modal-footer {
+            padding: 16px;
+            border-top: 1px solid var(--gh-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            background: var(--gh-bg-secondary);
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-cancel {
+            background: var(--gh-btn-bg);
+            border: 1px solid var(--gh-border);
+            color: var(--gh-text-main);
+            padding: 5px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-cancel:hover {
+            background: var(--gh-btn-hover);
+        }
+
+        .btn-primary {
+            background: var(--gh-btn-primary);
+            border: 1px solid rgba(240, 246, 252, 0.1);
+            color: #fff;
+            padding: 5px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: var(--gh-btn-primary-hover);
+            text-decoration: none;
+        }
+
+        .icon {
+            display: inline-block;
+            vertical-align: text-bottom;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .header-left {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-logo-container {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .container {
+                flex-direction: column;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .sidebar-header {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 16px;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 0;
+                max-width: none;
+            }
+
+            .vcard-names {
+                margin-bottom: 0;
+            }
+
+            .vcard-fullname {
+                font-size: 20px;
+            }
+
+            .vcard-username {
+                font-size: 16px;
+            }
+
+            .repo-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .no-results {
+                grid-column: span 1;
+            }
+
+            .contrib-graph {
+                padding: 12px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button,
+            .modal-footer a {
+                width: 100%;
+            }
+
+            .local-search {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="header-logo-container">
+                <button class="mobile-menu-btn">
+                    <svg viewBox="0 0 16 16" width="24" height="24">
+                        <path
+                            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+                        </path>
+                    </svg>
+                </button>
+                <div class="header-logo">
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                        </path>
+                    </svg>
+                </div>
+                <div style="width: 24px;"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="pic.png" alt="Avatar" class="avatar">
+                <div class="vcard-names">
+                    <h1 class="vcard-fullname">Preetish Ubhrani</h1>
+                    <h2 class="vcard-username">ubhranipreetish</h2>
+                </div>
+            </div>
+
+            <div class="user-profile-bio">
+                Data Analyst turning complex datasets into clear, actionable intelligence. I build scalable models and
+                dashboards.
+            </div>
+
+            <a href="https://github.com/ubhranipreetish" class="btn-profile">Follow / Contact</a>
+
+            <ul class="vcard-details">
+                <li>
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z">
+                        </path>
+                    </svg>
+                    India
+                </li>
+                <li>
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">
+                        </path>
+                    </svg>
+                    <a href="https://github.com/ubhranipreetish" target="_blank">github.com/ubhranipreetish</a>
+                </li>
+            </ul>
+
+            <div class="skills-section">
+                <h2>Organizations</h2>
+                <div class="skills-badges">
+                    <span class="badge">Excel</span>
+                    <span class="badge">Looker Studio</span>
+                    <span class="badge">Tableau</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">SQL</span>
+                    <span class="badge">Pandas</span>
+                    <span class="badge">NumPy</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <nav class="UnderlineNav">
+                <div class="UnderlineNav-item">
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                        </path>
+                    </svg>
+                    Projects <span class="repo-count" id="repo-count-badge">2</span>
+                </div>
+            </nav>
+
+            <div class="repo-filter-bar">
+                <input type="text" id="repo-search" class="local-search" placeholder="Find a project...">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="excel">Excel</button>
+                    <button class="filter-btn" data-filter="looker">Looker Studio</button>
+                    <button class="filter-btn" data-filter="python">Python</button>
+                    <button class="filter-btn" data-filter="tableau">Tableau</button>
+                </div>
+            </div>
+
+            <div class="repo-grid" id="repo-grid">
+
+
+
+
+
+                <div class="repo-card open-modal-btn" data-category="tableau"
+                    data-title="Flight Delay and Cancellation Analysis"
+                    data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ990tcZ-c0IE7j7rj7cn-AcDtCDXTyRrgs4g&s"
+                    data-link="https://public.tableau.com/app/profile/preetish.ubhrani/viz/Flight_Delay_Analysis_Final_Dashboard/HomePage"
+                    data-desc="Identified major delay factors including weather, carrier, and NAS delays and delivered actionable insights to improve scheduling efficiency and reduce delays.">
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ990tcZ-c0IE7j7rj7cn-AcDtCDXTyRrgs4g&s"
+                        alt="Cover" class="card-cover-image">
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+
+                                <a href="https://public.tableau.com/app/profile/preetish.ubhrani/viz/Flight_Delay_Analysis_Final_Dashboard/HomePage"
+                                    class="repo-title">
+                                    Flight Delay and Cancellation Analysis
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="repo-desc">
+                            Identified major delay factors including weather, carrier, and NAS delays and delivered actionable insights to improve scheduling efficiency and reduce delays
+                        </p>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-tableau"></span> Tableau</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repo-card open-modal-btn" data-category="looker" data-title="F1 Sponsorship ROI Analytics"
+                    data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7hmh4uemzZQbbxnxUB99r8XxuZ1NOQtMqg&s"
+                    data-link="https://public.tableau.com/app/profile/kushagra.maheshwari4048/viz/RaceIQF1PerformanceAnalytics/Dashboard1"
+                    data-desc="Developed a comprehensive ROI analytics dashboard for F1 sponsorship and investment. Leveraged Python and Tableau to convert raw racing data into actionable business intelligence.">
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7hmh4uemzZQbbxnxUB99r8XxuZ1NOQtMqg&s"
+                        alt="Cover" class="card-cover-image">
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+
+                                <a href="https://public.tableau.com/app/profile/kushagra.maheshwari4048/viz/RaceIQF1PerformanceAnalytics/Dashboard1" class="repo-title">
+                                    F1 Sponsorship ROI Analytics
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="repo-desc">
+                            Developed a comprehensive ROI analytics dashboard for F1 sponsorship and investment.
+                            Leveraged Python and Tableau to convert raw racing data into actionable business
+                            intelligence for strategic decision-making.
+                        </p>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-looker"></span> Looker</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repo-card open-modal-btn" data-category="excel" data-title="Spotify User Behavior & Pattern"
+                    data-img="data:image/jpeg;base64,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"
+                    data-link="https://public.tableau.com/app/profile/adarsh.vashistha/viz/Spotify_Dashboard_17774564636670/Dashboard1"
+                    data-desc="Processed and cleaned Spotify user datasets using Python (Pandas) for accurate analysis and built interactive Tableau dashboards to visualize user behavior and subscription trends">
+
+                    <img src="data:image/jpeg;base64,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"
+                        alt="Cover" class="card-cover-image">
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+
+                                <a href="https://public.tableau.com/app/profile/adarsh.vashistha/viz/Spotify_Dashboard_17774564636670/Dashboard1" class="repo-title">
+                                    Spotify User Behavior & Pattern
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="repo-desc">
+                            Processed and cleaned Spotify user datasets using Python (Pandas) for accurate analysis and
+                            built interactive Tableau dashboards to visualize user behavior and subscription trends
+                        </p>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-excel"></span> Excel</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repo-card open-modal-btn" data-category="python"
+                    data-title="Credit Risk Analysis & Loan Default Prediction"
+                    data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNPAY2kmQqHXUQDeyZ0zNB3ZK9_OphacnleQ&s"
+                    data-link="https://credit-risk-analyzer-456.streamlit.app/"
+                    data-desc="Analyzed features such as income, credit score and loan amount for risk assessment and built predictive models to classify high risk and low risk borrowers.">
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNPAY2kmQqHXUQDeyZ0zNB3ZK9_OphacnleQ&s"
+                        alt="Cover" class="card-cover-image">
+
+                    <div class="repo-card-body">
+                        <div class="repo-header">
+                            <div class="repo-title-group">
+                                <svg class="icon">
+                                    <path
+                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                                    </path>
+                                </svg>
+
+                                <a href="https://credit-risk-analyzer-456.streamlit.app/" class="repo-title">
+                                    Credit Risk Analysis & Loan Default Prediction
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="repo-desc">
+                            Analyzed features such as income, credit score and loan amount for risk assessment and built
+                            predictive models to classify high risk and low risk borrowers.
+                        </p>
+
+                        <div class="repo-footer">
+                            <span><span class="lang-color lang-python"></span> Python</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="no-results" id="no-results-msg">
+                    No repositories match your search or filter.
+                </div>
+            </div>
+
+            <div class="contrib-graph">
+                <div class="contrib-title">175 contributions in the last year</div>
+                <div class="graph-squares">
+                    <script>
+                        const classes = ['g-sq', 'g-sq g-l1', 'g-sq g-l2', 'g-sq', 'g-sq', 'g-sq g-l3', 'g-sq', 'g-sq g-l4', 'g-sq g-l1'];
+                        for (let i = 0; i < 175; i++) {
+                            const randomClass = classes[Math.floor(Math.random() * classes.length)];
+                            document.write(`<div class="${randomClass}"></div>`);
+                        }
+                    </script>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> Preetish Ubhrani. All rights reserved.</p>
+        <div style="margin-top: 8px;">
+            <a href="https://github.com/ubhranipreetish" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="m-title">Project Title</div>
+                <button class="close-btn" id="close-modal">
+                    <svg viewBox="0 0 16 16">
+                        <path
+                            d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" id="m-img" alt="Project Cover" class="modal-img">
+                <p class="modal-desc" id="m-desc">Full description goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancel-modal">Cancel</button>
+                <a href="#" target="_blank" class="btn-primary" id="m-link">View Live Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. DYNAMIC FOOTER YEAR ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- 2. SEARCH AND FILTER FUNCTIONALITY ---
+        const searchInput = document.getElementById('repo-search');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const repoCards = document.querySelectorAll('.repo-card');
+        const repoCountBadge = document.getElementById('repo-count-badge');
+        const noResultsMsg = document.getElementById('no-results-msg');
+
+        let currentSearchTerm = '';
+        let currentFilter = 'all';
+
+        function filterRepositories() {
+            let visibleCount = 0;
+
+            repoCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const desc = card.getAttribute('data-desc').toLowerCase();
+                const category = card.getAttribute('data-category');
+
+                const matchesSearch = title.includes(currentSearchTerm) || desc.includes(currentSearchTerm);
+                const matchesFilter = currentFilter === 'all' || category === currentFilter;
+
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            repoCountBadge.innerText = visibleCount;
+            noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Handle Text Search
+        searchInput.addEventListener('input', (e) => {
+            currentSearchTerm = e.target.value.toLowerCase();
+            filterRepositories();
+        });
+
+        // Handle Button Filters
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                currentFilter = btn.getAttribute('data-filter');
+                filterRepositories();
+            });
+        });
+
+        // Set initial count
+        filterRepositories();
+
+        // --- 3. MODAL LOGIC ---
+        const modal = document.getElementById('modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const cancelModalBtn = document.getElementById('cancel-modal');
+
+        const mTitle = document.getElementById('m-title');
+        const mDesc = document.getElementById('m-desc');
+        const mImg = document.getElementById('m-img');
+        const mLink = document.getElementById('m-link');
+
+        // Open Modal
+        repoCards.forEach(project => {
+            project.addEventListener('click', () => {
+                mTitle.textContent = project.getAttribute('data-title');
+                mDesc.textContent = project.getAttribute('data-desc');
+                mImg.src = project.getAttribute('data-img');
+                mLink.href = project.getAttribute('data-link');
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close Modal
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelModalBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+
+</html>
